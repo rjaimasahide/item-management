@@ -1,0 +1,18 @@
+<div class='container'>
+  <div calss'row'>
+    <% if @storages == nil %>
+      <div>
+        タグがありません
+        <%= link_to 'タグを作る', new_storage_path %>
+      </div>
+    <% else %>
+      <div>
+        <% @storages.each do |storage| %>
+          <%= link_to storage_path(storage) do %>
+            <%= storage.name %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

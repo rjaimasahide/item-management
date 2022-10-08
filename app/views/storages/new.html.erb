@@ -1,0 +1,5 @@
+<%= form_with model: @storage, url: storages_path, local:true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "新規登録" %>
+<% end %>

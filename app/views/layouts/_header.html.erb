@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+  <%= link_to root_path do %>
+    LOGO
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link text-light m-2', method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
