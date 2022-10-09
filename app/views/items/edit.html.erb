@@ -1,0 +1,31 @@
+<%= form_with model: @item, url: item_path, local:true do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div>
+    <%= f.label :image_id %>
+    <%= f.file_field :image_id, accept: "image/*" %>
+  </div>
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+  <div>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %>
+  </div>
+  <div>
+    <%= f.label :owner %>
+    <%= f.text_field :owner %>
+  </div>
+  <div>
+    <%= f.label :purchase_status, '買う', value: true %>
+    <%= f.radio_button :purchase_status, true %>
+  </div>
+  <div>
+    <%= f.submit '更新する' %>
+  </div>
+  <%= link_to '削除する', item_path(@item), method: :delete %>
+<% end %>

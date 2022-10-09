@@ -6,7 +6,7 @@ class StoragesController < ApplicationController
 
   def show
     @storage = Storage.find(params[:id])
-    @items = Item.all
+    @items = Item.where(storage_id:  @storage.id)
   end
 
   def new

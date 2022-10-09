@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :storages, only: [:new, :show, :index, :create, :destroy]
 
-  resources :items, only: [:show, :create, :destroy]
+  resources :items, only: [:show, :new, :edit, :create, :destroy, :update]
 
   resources :favorites, only: [:index, :show, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
