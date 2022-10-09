@@ -1,2 +1,9 @@
-<%= @storage.name %>
-show
+<div class="container">
+  <div calss="row">
+    <div class="col">
+      <% @items.each do |item| %>
+        <%= item.name %>
+      <% end %>
+    </div>
+  </div>
+</div>

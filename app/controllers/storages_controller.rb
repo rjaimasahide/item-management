@@ -6,6 +6,7 @@ class StoragesController < ApplicationController
 
   def show
     @storage = Storage.find(params[:id])
+    @items = Item.all
   end
 
   def new
