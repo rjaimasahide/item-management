@@ -8,6 +8,10 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
   end
   
+  def new
+    @favorite = Favorite.new
+  end
+  
   def create
     @favorite = Favorite.new(favorite_params)
     @favorite.save
@@ -17,12 +21,6 @@ class FavoritesController < ApplicationController
   def destory
     @favorite = Favorite.find(params[:id])
     @favorite.destory
-    redirect_to favorites_path
-  end
-  
-  def update
-    @favorite = Favorite.find(params[:id])
-    @faorite.update
     redirect_to favorites_path
   end
   
