@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_001056) do
 
   create_table "favorites", force: :cascade do |t|
     t.string "name"
+    t.integer "storage_id"
     t.text "comment"
     t.integer "image_id"
     t.integer "amount"
