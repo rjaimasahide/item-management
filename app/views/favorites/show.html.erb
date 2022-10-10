@@ -1,0 +1,32 @@
+<div class='container'>
+  <div calss'row'>
+    <div class='col'>
+      <table class="order-customer">
+        <tr>
+          <th>アイテム名</th>
+          <td><%= @favorite.name %></td>
+        </tr>
+        <tr>
+          <th>保管所</th>
+          <td><%= @favorite.storage_id %></td>
+        <tr>
+          <th>個数</th>
+          <td><%= @favorite.amount %></td>
+        </tr>
+        <tr>
+          <th>期限</th>
+          <td><%= @favorite.deadline %></td>
+        </tr>
+        <tr>
+          <th>持ち主</th>
+          <td><%= @favorite.owner %></td>
+        </tr>
+        <tr>
+          <th>買い物メモ</th>
+          <td><%= @favorite.purchase_status %></td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_favorite_path(@favorite) %>
+    </div>
+  </div>
+</div>

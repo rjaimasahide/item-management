@@ -2,7 +2,9 @@
   <div calss'row'>
     <div>
       <% @favorites.each do |favorite| %>
-        <%= favorite.name %>
+        <%= link_to favorite_path(favorite) do %>
+          <%= favorite.name %>
+        <% end %>
       <% end %>
       <%= link_to 'お気に入り登録', new_favorite_path %>
     </div>

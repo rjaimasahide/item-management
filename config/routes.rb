@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   resources :items, only: [:new, :edit, :create, :destroy, :update]
 
-  resources :favorites, only: [:index, :edit, :new, :create, :destroy, :update]
+  resources :favorites, only: [:index, :show, :edit, :new, :create, :destroy, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
