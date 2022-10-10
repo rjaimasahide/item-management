@@ -27,6 +27,16 @@
         </tr>
       </table>
       <%= link_to '編集する', edit_favorite_path(@favorite) %>
+      <%= form_with model: @item, url: items_path, local:true do |f| %>
+        <%= f.hidden_field :name, value: @favorite.name %>
+        <%= f.hidden_field :storage_id, value: @favorite.storage_id %>
+        <%= f.hidden_field :image_id, value: @favorite.image_id %>
+        <%= f.hidden_field :amount, value: @favorite.amount %>
+        <%= f.hidden_field :deadline, value: @favorite.deadline %>
+        <%= f.hidden_field :owner, value: @favorite.owner %>
+        <%= f.hidden_field :purchase_status, value: @favorite.purchase_status %>
+        <%= f.submit 'アイテム登録' %>
+      <% end %>
     </div>
   </div>
 </div>

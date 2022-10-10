@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
   
   def show
     @favorite = Favorite.find(params[:id])
+    @item = Item.new
   end
 
   def edit
