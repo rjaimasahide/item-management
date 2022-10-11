@@ -1,10 +1,26 @@
 <div class="container">
   <div calss="row">
-    <div class="col">
+    <div class="form-inline text-left">
+      <h3><b>アイテム一覧</b></h3>
+      <h5>(全<%= @items.count %>件)</h5>
+    </div>
+    <div class="row row-cols-4">
       <% @items.each do |item| %>
-        <%= link_to edit_item_path(item) do %>
-          <%= item.name %>
-        <% end %>
+        <div class="col">
+          <div  class="row flex-column bd-highlight mb-3">
+            <div class="p-2 bd-highlight mx-auto">
+              <%= link_to edit_item_path(item) do %>
+                <%= image_tag item.get_image_id, size: '220x150' %>
+              <% end %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <%= link_to item.name, edit_item_path(item) %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <p><%= item.deadline %></p>
+            </div>
+          </div>
+        </div>
       <% end %>
       <%= link_to "物品追加", new_item_path(storage_id: @storage.id) %>
     </div>
