@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
   
   def show
     @favorite = Favorite.find(params[:id])
+    storage = @favorite.storage_id
+    @storage = Storage.find(storage)
     @item = Item.new
   end
 

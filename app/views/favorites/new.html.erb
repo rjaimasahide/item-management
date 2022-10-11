@@ -25,8 +25,8 @@
     <%= f.text_field :owner %>
   </div>
   <div>
-    <%= f.label :purchase_status, '買う', value: true %>
-    <%= f.radio_button :purchase_status, true %>
+    <%= f.label :purchase_status, '買う' %>
+    <%= f.check_box :purchase_status, check:true %>
   </div>
   <div>
     <%= f.submit '追加' %>
