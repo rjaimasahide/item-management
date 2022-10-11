@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to storages_path
+    redirect_to storage_path(@item.storage_id)
   end
 
   private
