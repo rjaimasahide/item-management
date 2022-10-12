@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
   end
-  
+
   def show
     @favorite = Favorite.find(params[:id])
     storage = @favorite.storage_id
@@ -25,9 +25,9 @@ class FavoritesController < ApplicationController
     redirect_to favorites_path
   end
 
-  def destory
+  def destroy
     @favorite = Favorite.find(params[:id])
-    @favorite.destory
+    @favorite.destroy
     redirect_to favorites_path
   end
 

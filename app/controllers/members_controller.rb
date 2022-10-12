@@ -10,7 +10,7 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-    redirect_to storage_path
+    redirect_to storages_path
   end
 
   private

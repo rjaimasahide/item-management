@@ -30,6 +30,10 @@
             <tr>
               <th>メンバー名</th>
               <td><%= member.name %></td>
+              <td>
+                <%= link_to member_path(member), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+                  <i class="far fa-trash-alt"></i></td>
+                <% end %>
             </tr>
           </table>
         <% end %>
