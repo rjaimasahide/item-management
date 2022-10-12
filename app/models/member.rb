@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
   
   has_many :comments, dependent: :destroy
-  belongs_to :member
+  belongs_to :user
   
   validates :name, presence:true
   

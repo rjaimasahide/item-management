@@ -2,6 +2,8 @@ class StoragesController < ApplicationController
 
   def index
     @storages = Storage.all
+    @member = Member.new
+    @members = Member.where(user_id: current_user.id)
   end
 
   def show
