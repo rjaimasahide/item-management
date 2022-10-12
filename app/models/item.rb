@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
 
+  has_many :comments, dependent: :destroy
   belongs_to :storage
 
   has_one_attached :image_id
