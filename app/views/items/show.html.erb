@@ -25,6 +25,12 @@
         </tr>
       </table>
       <%= link_to '履歴を削除する', item_path(@item), method: :delete %>
+      <%= form_with model: @item, url: item_path, local: true do |f| %>
+        <%= f.label :storage_id, "保管場所を選択" ,class:'form-label col-4' %>
+        <%= f.select :storage_id, options_from_collection_for_select(Storage.all,:id,:name), {prompt: '保管場所を選択してください'} , class:' col-6'%>
+        <%= f.hidden_field :deleted_at, value: false %>
+        <%= f.submit 'アイテムに追加' %>
+      <% end %>
     </div>
   </div>
 </div>
