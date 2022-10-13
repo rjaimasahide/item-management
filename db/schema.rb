@@ -40,19 +40,6 @@ ActiveRecord::Schema.define(version: 2022_10_12_035625) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.string "name"
-    t.integer "storage_id"
-    t.text "comment"
-    t.integer "image_id"
-    t.integer "amount"
-    t.date "deadline"
-    t.string "owner"
-    t.boolean "purchase_status", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "item_comments", force: :cascade do |t|
     t.integer "member_id"
     t.integer "item_id"
@@ -65,10 +52,11 @@ ActiveRecord::Schema.define(version: 2022_10_12_035625) do
     t.string "name"
     t.integer "storage_id"
     t.text "comment"
-    t.integer "image_id"
+    t.string "image_id"
     t.integer "amount"
     t.date "deadline"
     t.string "owner"
+    t.boolean "deleted_at", default: false, null: false
     t.boolean "purchase_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

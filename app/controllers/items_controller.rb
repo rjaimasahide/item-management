@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def index
+    @items = Item.where(delered_at: true)
+  end
+
   def new
     @item = Item.new
   end
