@@ -25,7 +25,11 @@
     <%= f.check_box :purchase_status, check:true %>
   </div>
   <div>
+    <%= @item.deleted_at %>
     <%= f.submit '更新する' %>
   </div>
 <% end %>
-<%= link_to '削除する', item_path(@item), method: :delete %>
+<%= form_with model: @item, url: item_path, local:true do |f| %>
+  <%= f.hidden_field :deleted_at, value: true %>
+  <%= f.submit '削除する' %>
+<% end %>

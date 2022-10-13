@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.where(delered_at: true)
+    @items = Item.where(deleted_at: true)
   end
 
   def new
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to storages_path
+    redirect_to storage_path(@item.storage_id)
   end
 
   def destroy
@@ -37,6 +37,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :storage_id, :comment, :image_id, :amount, :deadline, :owner, :purchase_status)
+    params.require(:item).permit(:name, :storage_id, :comment, :image_id, :amount, :deadline, :owner, :deleted_at, :purchase_status)
   end
 end

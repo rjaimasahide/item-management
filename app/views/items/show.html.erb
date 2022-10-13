@@ -1,0 +1,30 @@
+<div class="container">
+  <div calss="row">
+    <div class="col-md-6">
+      <table class="order-customer">
+        <tr><%= image_tag @item.get_image_id, size: '220x150' %></tr>
+        <tr>
+          <th>アイテム名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th>個数</th>
+          <td><%= @item.amount %></td>
+        </tr>
+        <tr>
+          <th>期限</th>
+          <td><%= @item.deadline %></td>
+        </tr>
+        <tr>
+          <th>持ち主</th>
+          <td><%= @item.owner %></td>
+        </tr>
+        <tr>
+          <th>買う</th>
+          <td><%= @item.purchase_status %></td>
+        </tr>
+      </table>
+      <%= link_to '履歴を削除する', item_path(@item), method: :delete %>
+    </div>
+  </div>
+</div>

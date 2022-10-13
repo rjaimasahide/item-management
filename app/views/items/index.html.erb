@@ -1,15 +1,13 @@
 <div class='container'>
   <div calss'row'>
-    <% if @items == nil %>
-    <div>
-      履歴がありません
-    </div>
-    <% else %>
     <div class="form-inline text-left">
       <h3><b>アイテム履歴一覧</b></h3>
       <h5>(全<%= @items.count %>件)</h5>
     </div>
-  <div class="row row-cols-4">
+    <% if @items == nil %>
+      履歴がありません
+    <% else %>
+    <div class="row row-cols-4">
     <% @items.each do |item| %>
     <div class="col">
       <div  class="row flex-column bd-highlight mb-3">
@@ -17,7 +15,7 @@
           <%= image_tag item.get_image_id, size: '220x150' %>
         </div>
         <div class="p-2 bd-highlight text-center">
-          <%= link_to item.name, edit_item_path(item) %>
+          <%= link_to item.name, item_path(item) %>
         </div>
         <div class="p-2 bd-highlight text-center">
           <p><%= item.deadline %></p>
