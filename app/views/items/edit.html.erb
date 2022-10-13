@@ -3,10 +3,13 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-
   <div>
     <%= f.label :image_id %>
     <%= f.file_field :image_id, accept: "image/*" %>
+  </div>
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
   </div>
   <div>
     <%= f.label :amount %>
@@ -19,6 +22,7 @@
   <div>
     <%= f.label :owner %>
     <%= f.text_field :owner %>
+    <%= f.select :owner, options_from_collection_for_select(Member.all,:id,:name), {prompt: '持ち主を選択してください'} , class:' col-4'%>
   </div>
   <div>
     <%= f.label :purchase_status, '買う' %>
