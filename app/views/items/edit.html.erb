@@ -1,11 +1,12 @@
 <%= form_with model: @item, url: item_path, local:true do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <%= image_tag @item.get_image_id, size: '220x150' %>
   <div>
     <%= f.label :image_id %>
     <%= f.file_field :image_id, accept: "image/*" %>
+  </div>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
   <div>
     <%= f.label :comment %>
@@ -22,7 +23,7 @@
   <div>
     <%= f.label :owner %>
     <%= f.text_field :owner %>
-    <%= f.select :owner, options_from_collection_for_select(Member.all,:id,:name), {prompt: '持ち主を選択してください'} , class:' col-4'%>
+    <%= f.select :owner, options_from_collection_for_select(Member.all,:name,:name), {:include_blank => true} , class:' col-4'%>
   </div>
   <div>
     <%= f.label :purchase_status, '買う' %>
