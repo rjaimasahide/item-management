@@ -43,6 +43,11 @@
     <tr>
       <th><%= item_comment.member.name %></th>
       <td><%= item_comment.comment %></td>
+      <td>
+        <%= link_to item_comment_path(item_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" } do %>
+          <i class="far fa-trash-alt"></i></td>
+        <% end %>
+      </td>
     </tr>
   </table>
 <% end %>
