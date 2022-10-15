@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
 
       t.string :name
       t.integer :storage_id
+      t.integer :user_id
       t.text :comment
       t.string :image_id
       t.integer :amount

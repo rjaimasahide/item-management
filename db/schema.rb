@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_035625) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.integer "storage_id"
+    t.integer "user_id"
     t.text "comment"
     t.string "image_id"
     t.integer "amount"
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_035625) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
