@@ -14,6 +14,8 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @item_comments = ItemComment.where(item_id: @item)
+    @item_comment = ItemComment.new
   end
 
   def create

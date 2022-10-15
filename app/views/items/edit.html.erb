@@ -37,10 +37,20 @@
   <%= f.hidden_field :deleted_at, value: true %>
   <%= f.submit '削除する' %>
 <% end %>
-<%= @members.each do |member| %>
+<div>
+<% @item_comments.each do |item_comment| %>
   <table>
     <tr>
-      <th><%= member.name %></th>
-      <td><%= </td>
+      <th><%= item_comment.member.name %></th>
+      <td><%= item_comment.comment %></td>
     </tr>
   </table>
+<% end %>
+<%= form_with model: @item_comment, url: item_comments_path, local:true do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id%>
+  <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+  <%= f.submit 'コメント登録' %>
+<% end %>
+</div>
