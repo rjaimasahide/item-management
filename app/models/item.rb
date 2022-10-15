@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   
   #検索機能
   def self.looks(word)
-    @item = Item.where("name LIKE?","%#{word}%")
+    @item = Item.where("name LIKE?","%#{word}%", )
   end
   
   #deadline(期限)までの日数

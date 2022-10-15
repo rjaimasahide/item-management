@@ -1,0 +1,5 @@
+<%= form_with model: @storage, url: storage_path(@storage), local:true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "名前変更" %>
+<% end %>

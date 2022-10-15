@@ -1,8 +1,10 @@
 <div class="container">
   <div calss="row">
     <div class="form-inline text-left">
-      <h3><b>アイテム一覧</b></h3>
+      <h3><b><%= @storage.name %>のアイテム一覧</b></h3>
       <h5>(全<%= @items.count %>件)</h5>
+      <%= link_to '保管所名変更', edit_storage_path(@storage) %>
+      <%= link_to '削除', storage_path(@storage), method: :delete, data: { confirm: "この保管庫を削除しますか？" } %>
     </div>
     <div class="row row-cols-4">
       <% @items.each do |item| %>

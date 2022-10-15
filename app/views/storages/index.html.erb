@@ -1,11 +1,6 @@
 <div class='container'>
   <div calss'row'>
-    <% if @storages == nil %>
-      <div>
-        タグがありません
-        <%= link_to 'タグを作る', new_storage_path %>
-      </div>
-    <% else %>
+    <%= link_to 'タグを作る', new_storage_path %>
       <div>
         <% @storages.each do |storage| %>
           <%= link_to storage_path(storage) do %>
@@ -38,6 +33,5 @@
           </table>
         <% end %>
       </div>
-    <% end %>
   </div>
 </div>

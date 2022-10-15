@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get "search" => "searches#search"
-  resources :storages, only: [:new, :show, :index, :create, :destroy]
+  resources :storages, only: [:new, :edit, :show, :index, :create, :update, :destroy]
 
   resources :items, only: [:index, :show, :new, :edit, :create, :destroy, :update]
 
