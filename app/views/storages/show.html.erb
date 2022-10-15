@@ -17,6 +17,19 @@
               <%= link_to item.name, edit_item_path(item) %>
             </div>
             <div class="p-2 bd-highlight text-center">
+              <% if item.period > 0 %>
+                あと<%= item.period %>日
+            </div>
+            <div class="p-2 bd-highlight text-center text-danger">
+              <% elsif item.period == 0 %>
+                期限日です
+            </div>
+            <div class="p-2 bd-highlight text-center text-danger">
+              <% else %>
+                期限が切れています
+              <% end %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
               <p><%= item.deadline %></p>
             </div>
           </div>
