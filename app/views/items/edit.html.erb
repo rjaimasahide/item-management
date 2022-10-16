@@ -22,7 +22,7 @@
   </div>
   <div>
     <%= f.label :owner %>
-    <%= f.text_field :owner %>
+    <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true %>
   </div>
   <div>
     <%= f.label :purchase_status, '買う' %>
