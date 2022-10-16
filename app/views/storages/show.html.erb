@@ -9,6 +9,7 @@
     <div class="row row-cols-4">
       <%= render 'items/list', items: @items %>
     </div>
+    <%= paginate @items %>
     <%= link_to "物品追加", new_item_path(storage_id: @storage.id) %>
     <%= form_with url: storage_path(@storage), method: :get do |f| %>
       <%= f.select :order, options_for_select([["更新日順","updated_at_order"],["期限順","latest_order"],["買うもの優先","purchase_status_order"],["名前順","name_order"]], :selected => params[:order]) %>

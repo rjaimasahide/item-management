@@ -8,7 +8,37 @@
       履歴がありません
     <% else %>
     <div class="row row-cols-4">
-    <%= render 'list', items: @items %>
+      <% @items.each do |item| %>
+        <div class="col">
+          <div  class="row flex-column bd-highlight mb-3">
+            <div class="p-2 bd-highlight mx-auto">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image_id, size: '220x150' %>
+              <% end %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <%= link_to item.name, item_path(item) %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <% if item.period > 0 %>
+                あと<%= item.period %>日
+            </div>
+            <div class="p-2 bd-highlight text-center text-danger">
+              <% elsif item.period == 0 %>
+                期限日です
+            </div>
+            <div class="p-2 bd-highlight text-center text-danger">
+              <% else %>
+                期限が切れています
+              <% end %>
+            </div>
+            <div class="p-2 bd-highlight text-center">
+              <p><%= item.deadline %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @items %>
     <% end %>
     </div>
   </div>
