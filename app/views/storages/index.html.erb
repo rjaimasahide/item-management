@@ -1,37 +1,41 @@
 <div class='container'>
   <div calss'row'>
     <%= link_to 'タグを作る', new_storage_path %>
-      <div>
-        <% @storages.each do |storage| %>
-          <%= link_to storage_path(storage) do %>
-            <%= storage.name %>
-          <% end %>
+    <div>
+      <% @storages.each do |storage| %>
+        <%= link_to storage_path(storage) do %>
+          <%= storage.name %>
         <% end %>
-      </div>
-      <div>
-        <%= form_with model: @member, url: members_path, local:true do |f| %>
-          <div>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-          </div>
-          <div>
-            <%= f.submit '追加' %>
-          </div>
-        <% end %>
-      </div>
-      <div>
-        <% @members.each do |member| %>
-          <table>
-            <tr>
-              <th>メンバー名</th>
-              <td><%= member.name %></td>
-              <td>
-                <%= link_to member_path(member), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
-                  <i class="far fa-trash-alt"></i></td>
-                <% end %>
-            </tr>
-          </table>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with model: @member, url: members_path, local:true do |f| %>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.submit '追加' %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <% @members.each do |member| %>
+        <table>
+          <tr>
+            <th>メンバー名</th>
+            <td><%= member.name %></td>
+            <td>
+              <%= link_to member_path(member), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <div>
+      <%= render 'items/list', items: @items %>
+    </div>
   </div>
 </div>

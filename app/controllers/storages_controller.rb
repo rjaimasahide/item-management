@@ -4,6 +4,7 @@ class StoragesController < ApplicationController
     @storages = Storage.where(user_id: current_user.id)
     @member = Member.new
     @members = Member.where(user_id: current_user.id)
+    @items = Item.where(user_id: current_user.id, purchase_status: true)
   end
 
   def show
