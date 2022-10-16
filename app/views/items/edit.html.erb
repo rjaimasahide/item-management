@@ -1,6 +1,6 @@
 <%= form_with model: @item, url: item_path, local:true do |f| %>
   <%= image_tag @item.get_image_id, size: '220x150' %>
-  <div>
+  <div> 
     <%= f.label :image_id %>
     <%= f.file_field :image_id, accept: "image/*" %>
   </div>
