@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.where(deleted_at: true)
+    items = Item.where(deleted_at: true, user_id: current_user.id)
+    @items = items.page(params[:page])
   end
 
   def new
