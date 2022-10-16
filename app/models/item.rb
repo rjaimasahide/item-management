@@ -19,6 +19,25 @@ class Item < ApplicationRecord
     (self.deadline - Date.current).to_i
   end
 
+  #並び替え機能
+  def self.list(order, storage_id)
+    if order == "latest_order"
+      items = Item.where(storage_id: storage_id, deleted_at: false)
+      @items = items.order(:deadline)
+    elsif order == "updated_at_order"
+      item = Item.where(storage_id: storage_id, deleted_at: false)
+      @items = item.order(:updated_at)
+    elsif order == "purchase_status_order"
+      items = Item.where(storage_id: storage_id, deleted_at: false)
+      @items = items.order(purchase_status: :DESC)
+    elsif order == "name_order"
+      items = Item.where(storage_id: storage_id, deleted_at: false)
+      @items = items.order(:name)
+    else
+      @items = Item.where(storage_id: storage_id, deleted_at: false)
+    end
+  end
+
   def get_image_id
       (image_id.attached?) ? image_id : 'no_image.jpg'
   end

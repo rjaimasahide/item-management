@@ -4,24 +4,11 @@
       <h3><b>アイテム履歴一覧</b></h3>
       <h5>(全<%= @items.count %>件)</h5>
     </div>
-    <% if @items == nil %>
+    <% if @items.count == 0 %>
       履歴がありません
     <% else %>
     <div class="row row-cols-4">
-    <% @items.each do |item| %>
-    <div class="col">
-      <div  class="row flex-column bd-highlight mb-3">
-        <div class="p-2 bd-highlight mx-auto">
-          <%= image_tag item.get_image_id, size: '220x150' %>
-        </div>
-        <div class="p-2 bd-highlight text-center">
-          <%= link_to item.name, item_path(item) %>
-        </div>
-        <div class="p-2 bd-highlight text-center">
-          <p><%= item.deadline %></p>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'list', items: @items %>
     <% end %>
     </div>
   </div>
