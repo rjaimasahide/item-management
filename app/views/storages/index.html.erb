@@ -3,7 +3,7 @@
     <div class="col-md-4 text-center">
       <h3>メンバー</h3>
         <% @members.each do |member| %>
-          <table>
+          <table class="m-auto">
             <tr>
               <th>メンバー名</th>
               <td><%= member.name %></td>
@@ -25,6 +25,11 @@
       <h3>買うものリスト</h3>
       <div class="row row-cols-2">
         <%= render 'items/list', items: @items %>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col d-flex justify-content-center pt-2">
+          <%= paginate @items %>
+        </div>
       </div>
     </div>
   </div>

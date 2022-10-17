@@ -1,8 +1,19 @@
-<div class="container">
+<div class="container text-center">
+  <h3><%= @storage.name %></h3>
+  <div class="row mt-5">
+    <div class="col d-flex justify-content-center text-center">
+      <div>
+      <%= form_with model: @storage, url: storage_path(@storage), local:true do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.submit "名前変更" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
   <div class="row">
-<%= form_with model: @storage, url: storage_path(@storage), local:true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit "名前変更" %>
-<% end %>
-<%= link_to '削除', storage_path(@storage), method: :delete, data: { confirm: "この保管庫を削除しますか？" } %>
+    <div class="col text-center">
+      <%= link_to 'このタグを削除する', storage_path(@storage), method: :delete, data: { confirm: "この保管庫を削除しますか？" } %>
+    </div>
+  </div>
+</div>
