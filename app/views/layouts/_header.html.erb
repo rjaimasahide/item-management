@@ -6,22 +6,42 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <% if user_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.hidden_field :id, value: current_user.id %>
-      <%= f.text_field :word %>
-      <%= f.submit '検索', class: "btn btn-primary" %>
-    <% end %>
-  </div>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto py-">
         <li>
-          <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link text-light m-2', method: :delete %>
+          <%= link_to 'タグを作る', new_storage_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li>
-          <%= link_to '履歴', items_path, class: 'nav-link text-light m-2' %>
+          <%= link_to '履歴', items_path, class: 'nav-link text-light mr-2' %>
         </li>
-  <% end %>
+        <li>
+          <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link text-light mr-2', method: :delete %>
+        </li>
     </ul>
   </div>
 </nav>
+<div class="row">
+  <div class="col">
+    <nav class="navbar navbar-expand-md navbar-light navbar-dark bg-dark text-white">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <% Storage.where(user_id: current_user.id).each do |storage| %>
+    <ul class="navbar-nav">
+      <%= link_to storage_path(storage), class: 'nav-link text-light mx-2' do %>
+      <li>
+        <%= storage.name %>
+      </li>
+      <% end %>
+    <% end %>
+    </ul>
+    </div>
+    <div class="search_form">
+        <%= form_with url: search_path, local: true, method: :get do |f| %>
+          <%= f.hidden_field :id, value: current_user.id %>
+          <%= f.text_field :word %>
+          <%= f.submit '検索', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </nav>
+  </div>
+  <% end %>
+</div>

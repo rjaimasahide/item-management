@@ -1,13 +1,13 @@
 <% items.each do |item| %>
   <div class="col">
-    <div  class="row shadow-sm pt-2 mb-5 bg-body rounded flex-column bd-highlight text-aline m-1">
-      <div class="bd-highlight mx-auto text-center">
+    <div  class="row shadow-sm h-100 pt-2 mb-2 bg-body rounded flex-column text-aline">
+      <div class="bd-highlight mx-1 text-center">
         <%= link_to edit_item_path(item) do %>
-          <p class="m-auto"><%= image_tag item.get_image_id, size: '220x150' %></p>
+          <p class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '60%' %></p>
         <% end %>
         <p class="m-1"><%= link_to item.name, edit_item_path(item) %></p>
         <% if item.purchase_status == true %>
-          <p class="m-auto w-25 bg-danger text-white">買う</p>
+          <p class="m-auto w-25 bg-danger text-white rounded">買う</p>
         <% else %>
           <p class="p-1"></p>
         <% end %>
@@ -22,7 +22,7 @@
         <% end %>
         <% if item.deadline == nil %>
         <% else %>
-          <p>期限日 <%= item.deadline %></p>
+          <p class="my-1">期限日 <%= item.deadline %></p>
         <% end %>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <div calss="row">
+  <div class="row">
     <div class="form-inline text-left m-3">
       <h3><b><%= @storage.name %>のアイテム</b></h3>
       <h5>(全<%= @items.count %>件)</h5>
@@ -7,24 +7,27 @@
         <i class="fas fa-edit"></i>
       <% end %>
     </div>
-    <div class="d-flex justify-content-between">
-      <div>
-        <%= form_with url: storage_path(@storage), method: :get do |f| %>
-          <%= f.select :order, options_for_select([["更新日順","updated_at_order"],["期限順","latest_order"],["買うもの優先","purchase_status_order"],["名前順","name_order"]], :selected => params[:order]) %>
-          <%= f.hidden_field :storage_id, value: @storage.id %>
-          <%= f.submit '並び替える' %>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to new_item_path(storage_id: @storage.id) do %>
-          <button class="btn btn-success" >アイテム追加</button>
-        <% end %>
-      </div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col">
+      <%= form_with url: storage_path(@storage), method: :get do |f| %>
+        <%= f.select :order, options_for_select([["更新日順","updated_at_order"],["期限順","latest_order"],["買うもの優先","purchase_status_order"],["名前順","name_order"]], :selected => params[:order]) %>
+        <%= f.hidden_field :storage_id, value: @storage.id %>
+        <%= f.submit '並び替える' %>
+      <% end %>
     </div>
-    <div class="row row-cols-4">
-      <%= render 'items/list', items: @items %>
+    <div class="col text-right">
+      <%= link_to new_item_path(storage_id: @storage.id) do %>
+        <button class="btn btn-success" >アイテム追加</button>
+      <% end %>
     </div>
-    <div class="d-flex justify-content-center">
+  </div>
+  <div class="row row-cols-4">
+    <%= render 'items/list', items: @items %>
+  </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col d-flex justify-content-center pt-2">
       <%= paginate @items %>
     </div>
   </div>
