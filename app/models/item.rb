@@ -16,7 +16,11 @@ class Item < ApplicationRecord
 
   #deadline(期限)までの日数
   def period
-    (self.deadline - Date.current).to_i
+    if self.deadline == nil
+      nil
+    else
+      (self.deadline - Date.current).to_i
+    end
   end
 
   #並び替え機能

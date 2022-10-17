@@ -3,3 +3,4 @@
   <%= f.text_field :name %>
   <%= f.submit "名前変更" %>
 <% end %>
+<%= link_to '削除', storage_path(@storage), method: :delete, data: { confirm: "この保管庫を削除しますか？" } %>
