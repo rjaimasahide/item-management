@@ -1,8 +1,8 @@
 <div class='container'>
   <div calss'row'>
     <div class="form-inline text-left">
-      <h3><b>アイテム履歴一覧</b></h3>
-      <h5>(全<%= @items.count %>件)</h5>
+      <h3><b>アイテム履歴</b></h3>
+      <h5>(全<%= Item.where(user_id: current_user.id, deleted_at: true).count %>件)</h5>
     </div>
     <% if @items.count == 0 %>
       履歴がありません
@@ -10,35 +10,40 @@
     <div class="row row-cols-4">
       <% @items.each do |item| %>
         <div class="col">
-          <div  class="row flex-column bd-highlight mb-3">
-            <div class="p-2 bd-highlight mx-auto">
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.get_image_id, size: '220x150' %>
+          <div  class="row shadow-sm h-100 pt-2 mb-2 bg-body rounded flex-column text-aline">
+            <div class="bd-highlight mx-1 text-center">
+              <%= link_to edit_item_path(item) do %>
+                <p class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '60%' %></p>
               <% end %>
-            </div>
-            <div class="p-2 bd-highlight text-center">
-              <%= link_to item.name, item_path(item) %>
-            </div>
-            <div class="p-2 bd-highlight text-center">
-              <% if item.period > 0 %>
-                あと<%= item.period %>日
-            </div>
-            <div class="p-2 bd-highlight text-center text-danger">
-              <% elsif item.period == 0 %>
-                期限日です
-            </div>
-            <div class="p-2 bd-highlight text-center text-danger">
+                <p class="m-1"><%= link_to item.name, item_path(item) %></p>
+              <% if item.purchase_status == true %>
+                <p class="m-auto w-25 bg-danger text-white rounded">買う</p>
               <% else %>
-                期限が切れています
+                <p class="p-1"></p>
               <% end %>
-            </div>
-            <div class="p-2 bd-highlight text-center">
-              <p><%= item.deadline %></p>
+              <% if item.period == nil %>
+                <p class="my-1"></p>
+              <% elsif item.period > 0 %>
+                <p class="my-1">あと<%= item.period %>日</p>
+              <% elsif item.period == 0 %>
+                <p class="my-1 text-danger">期限日です</p>
+              <% else %>
+                <p class="my-1 text-danger">期限が切れています</p>
+              <% end %>
+              <% if item.deadline == nil %>
+              <% else %>
+                <p class="my-1">期限日 <%= item.deadline %></p>
+              <% end %>
             </div>
           </div>
         </div>
       <% end %>
-      <%= paginate @items %>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col d-flex justify-content-center pt-2">
+        <%= paginate @items %>
+      </div>
+    </div>
     <% end %>
     </div>
   </div>
