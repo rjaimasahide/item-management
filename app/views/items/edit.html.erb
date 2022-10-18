@@ -1,61 +1,92 @@
-<%= form_with model: @item, url: item_path, local:true do |f| %>
-  <%= image_tag @item.get_image_id, size: '220x150' %>
-  <div> 
-    <%= f.label :image_id %>
-    <%= f.file_field :image_id, accept: "image/*" %>
-  </div>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :comment %>
-    <%= f.text_field :comment %>
-  </div>
-  <div>
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-  </div>
-  <div>
-    <%= f.label :deadline %>
-    <%= f.date_field :deadline %>
-  </div>
-  <div>
-    <%= f.label :owner %>
-    <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true %>
-  </div>
-  <div>
-    <%= f.label :purchase_status, '買う' %>
-    <%= f.check_box :purchase_status, check:true %>
-  </div>
-  <div>
-    <%= @item.deleted_at %>
-    <%= f.submit '更新する' %>
-  </div>
-<% end %>
-<%= form_with model: @item, url: item_path, local:true do |f| %>
-  <%= f.hidden_field :deleted_at, value: true %>
-  <%= f.submit '削除する' %>
-<% end %>
-<div>
-<% @item_comments.each do |item_comment| %>
-  <table>
-    <tr>
-      <th><%= item_comment.member.name %></th>
-      <td><%= item_comment.comment %></td>
-      <td>
-        <%= link_to item_comment_path(item_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" } do %>
-          <i class="far fa-trash-alt"></i></td>
+<div class="container text-center">
+  <h3 class="mt-3">アイテム編集</h3>
+  <div class="row mt-5 d-flex justify-content-center">
+    <div class="col-md-5 pt-3 text-center border rounded">
+      <%= form_with model: @item, url: item_path(@item), local:true do |f| %>
+        <%= image_tag @item.get_image_id, width: '30%', height: '30%' %>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label>名前</label>
+              <%= f.text_field :name, class: "form-control text-center", placeholder: "名前" %>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label>個数</label>
+                <%= f.text_field :amount, class: "form-control text-center", placeholder: "個数" %>
+            </div>
+          <div class="form-group col-md-7">
+            <label>期限日</label>
+            <%= f.date_field :deadline, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>画像</label>
+            <%= f.file_field :image_id, accept: "image/*" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <lavel>持ち主</lavel>
+            <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-5">
+            <%= f.label :purchase_status, '買う' %>
+            <%= f.check_box :purchase_status, check:true %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <lavel>コメント</lavel>
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+          </div>
+        </div>
         <% end %>
-      </td>
-    </tr>
-  </table>
-<% end %>
-<%= form_with model: @item_comment, url: item_comments_path, local:true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id%>
-  <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
-  <%= f.submit 'コメント登録' %>
-<% end %>
+      <div class="row">
+        <div class="col">
+          <%= form_with model: @item, url: item_path, local:true do |f| %>
+            <%= f.hidden_field :deleted_at, value: true %>
+            <%= f.submit '削除する', class: 'btn btn-danger btn-block', data: { confirm: "このアイテムを削除しますか？" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div clss="row">
+        <h5>コメント</h5>
+        <div class="col border" style="height: 400px;">
+          <% @item_comments.each do |item_comment| %>
+            <table class="table table-borderless m-auto">
+              <tr>
+                <th class="text-left" style="width: 200px;">
+                  <%= link_to item_comment_path(item_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" } do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                  <%= item_comment.member.name %>
+                </th>
+                <td class="text-left"><%= item_comment.comment %></td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= form_with model: @item_comment, url: item_comments_path, local:true do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id%>
+            <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
+            <%= f.label :comment %>
+            <%= f.text_field :comment %>
+            <%= f.submit 'コメント登録' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

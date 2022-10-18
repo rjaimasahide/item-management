@@ -7,7 +7,6 @@ class Item < ApplicationRecord
 
   validates :name, presence:true
   validates :storage_id, presence:true
-  validates :amount, presence:true
 
   #検索機能
   def self.looks(word)
