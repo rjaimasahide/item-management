@@ -1,6 +1,10 @@
 <div class="container px-5 px-sm-0">
   <h3 class="my-3">検索結果</h3>
   <div class="row row-cols-4">
-    <%= render 'items/list', items: @items %>
+    <% if @items.count == 0 %>
+      検索結果がありません
+    <% else %>
+      <%= render 'items/list', items: @items %>
+    <% end %>
   </div>
 </div>
