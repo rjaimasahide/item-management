@@ -1,0 +1,6 @@
+<%= form_with(model:[item,item_comment], method: :post, local: false) do |f| %>
+  <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.submit 'コメント登録' %>
+<% end %>

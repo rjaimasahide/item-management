@@ -1,0 +1,5 @@
+$(".item_comment").html("<%= j(render 'items/comment', item: @item )%>")
+
+<%#登録後のフォームを空白にする%>
+
+$("textarea").val('');

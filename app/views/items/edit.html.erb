@@ -61,30 +61,14 @@
       <div clss="row">
         <h5>コメント</h5>
         <div class="col border" style="height: 400px;">
-          <% @item_comments.each do |item_comment| %>
-            <table class="table table-borderless m-auto">
-              <tr>
-                <th class="text-left" style="width: 200px;">
-                  <%= link_to item_comment_path(item_comment), method: :delete, data: { confirm: "このコメントを削除しますか？" } do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                  <%= item_comment.member.name %>
-                </th>
-                <td class="text-left"><%= item_comment.comment %></td>
-              </tr>
-            </table>
-          <% end %>
+          <div class="item_comment">
+            <%= render "comment", item: @item %>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <%= form_with model: @item_comment, url: item_comments_path, local:true do |f| %>
-            <%= f.hidden_field :item_id, value: @item.id%>
-            <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
-            <%= f.label :comment %>
-            <%= f.text_field :comment %>
-            <%= f.submit 'コメント登録' %>
-          <% end %>
+          <%= render "new_comment", item: @item, item_comment: @item_comment %>
         </div>
       </div>
     </div>
