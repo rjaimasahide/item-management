@@ -3,8 +3,12 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     @member.user_id = current_user.id
-    @member.save
-    redirect_to storages_path
+    if @member.save
+       redirect_to storages_path
+    else
+       flash[:danger] = @member.errors.full_messages
+       redirect_to storages_path
+    end
   end
 
   def destroy
