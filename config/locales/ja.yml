@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        name: アイテム名
+      member:
+        name: メンバー名

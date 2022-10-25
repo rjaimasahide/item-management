@@ -22,8 +22,13 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    redirect_to storage_path(@item.storage_id)
+    @storage_id = @item.storage_id
+    if @item.save
+       redirect_to storage_path(@item.storage_id)
+    else
+       flash[:danger] = @item.errors.full_messages
+       redirect_to new_item_path(storage_id: @storage_id)
+    end
   end
 
   def destroy
