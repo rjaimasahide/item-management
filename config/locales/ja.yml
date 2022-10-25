@@ -5,3 +5,5 @@ ja:
         name: アイテム名
       member:
         name: メンバー名
+      storage:
+        name: 保管所名

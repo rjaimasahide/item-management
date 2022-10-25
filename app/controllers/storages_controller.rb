@@ -25,15 +25,23 @@ class StoragesController < ApplicationController
   def create
     @storage = Storage.new(storage_params)
     @storage.user_id = current_user.id
-    @storage.save
-    redirect_to storages_path
+    if @storage.save
+       redirect_to new_storage_path
+    else
+       flash[:danger] = @storage.errors.full_messages
+       redirect_to new_storage_path
+    end
   end
 
   def update
     @storage = Storage.find(params[:id])
     @storage.user_id = current_user.id
-    @storage.update(storage_params)
-    redirect_to storage_path(@storage)
+    if  @storage.update(storage_params)
+        redirect_to edit_storage_path(@storage)
+    else
+        flash[:danger] = @storage.errors.full_messages
+        redirect_to edit_storage_path(@storage)
+    end
   end
 
   def destroy
