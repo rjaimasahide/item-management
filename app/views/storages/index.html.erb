@@ -2,21 +2,11 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <h3>メンバー</h3>
-        <% @members.each do |member| %>
-          <table>
-            <tr>
-              <th class="text-left" style="width: 150px;">
-                <%= link_to member_path(member), method: :delete, data: { confirm: "このメンバーを削除しますか？" } do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-                メンバー名
-              </th>
-              <td class="text-center"><%= member.name %></td>
-            </tr>
-          </table>
-        <% end %>
+        <div class="member_index">
+          <%= render "members/index", members: @members %>
+        </div>
       <div class="mt-4 form-inline">
-        <%= form_with model: @member, url: members_path, local:true do |f| %>
+        <%= form_with model: @member, url: members_path, local:false do |f| %>
           <div class="form-row">
             <div class="form-group">
               <%= f.text_field :name, class: "form-control", placeholder: "メンバー名" %>
