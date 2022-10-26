@@ -1,11 +1,11 @@
 <div class='container px-5 px-sm-0'>
-  <div class="row mt-3">
-    <div class="col-md-4 text-center">
+  <div class="row">
+    <div class="col-lg-4 mt-2 text-center">
       <h3>メンバー</h3>
         <div class="shadow-sm rounded bg-light p-2 member_index">
           <%= render "members/index", members: @members %>
         </div>
-      <div class="mt-4 form-inline">
+      <div class="mt-3 form-inline d-flex justify-content-end">
         <div class="text-danger">
           <%= flash[:danger] %>
         </div>
@@ -19,7 +19,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-7 ml-4 text-center">
+    <div class="col-lg-7 col-12 mt-2 text-center">
       <h3>買うものリスト</h3>
       <div class="row row-cols-2">
         <%= render 'items/list', items: @items %>

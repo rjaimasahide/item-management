@@ -7,12 +7,12 @@
     <% if @items.count == 0 %>
       履歴がありません
     <% else %>
-    <div class="row row-cols-4">
+    <div class="row row-cols-md-4 row-cols-2">
       <% @items.each do |item| %>
         <div class="col">
-          <div  class="row shadow-sm h-100 pt-2 mb-2 bg-body rounded text-aline">
+          <div  class="row shadow-sm h-100 pt-3 mb-2 mx-1 bg-body rounded text-aline">
             <div class="bd-highlight mx-1 text-center">
-              <%= link_to edit_item_path(item) do %>
+              <%= link_to item_path(item) do %>
                 <p class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '60%' %></p>
               <% end %>
             </div>

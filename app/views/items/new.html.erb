@@ -4,8 +4,10 @@
     <%= flash[:danger] %>
   </div>
   <div class="row mt-5 d-flex justify-content-center">
-    <div class="col-auto pt-3 d-flex justify-content-center text-center border rounded">
-      <%= render "form", item: @item %>
+    <div class="col-lg-5  col-md-7 col-sm-9 col-11 pt-3 d-flex text-center border rounded">
+      <div class="w-100">
+        <%= render "form", item: @item %>
+      </div>
     </div>
   </div>
 </div>
