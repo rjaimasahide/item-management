@@ -1,49 +1,45 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-header text-header">
-    <h2 class="text-header text-white">ものかんり</h2>
+  <h2 class="text-header text-white">ものかんり</h2>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <% if user_signed_in? %>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto py-">
-        <li>
-          <%= link_to 'トップページ', storages_path, class: 'nav-link text-light mr-2' %>
-        </li>
-        <li>
-          <%= link_to 'タグ作成', new_storage_path, class: 'nav-link text-light mr-2' %>
-        </li>
-        <li>
-          <%= link_to '履歴', items_path, class: 'nav-link text-light mr-2' %>
-        </li>
-        <li>
-          <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link text-light', method: :delete %>
-        </li>
+      <li>
+        <%= link_to 'トップページ', storages_path, class: 'nav-link text-light mr-2' %>
+      </li>
+      <li>
+        <%= link_to 'タグ作成', new_storage_path, class: 'nav-link text-light mr-2' %>
+      </li>
+      <li>
+        <%= link_to '履歴', items_path, class: 'nav-link text-light mr-2' %>
+      </li>
+      <li>
+        <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link text-light', method: :delete %>
+      </li>
     </ul>
   </div>
 </nav>
-<div class="row bg-header">
-  <div class="col-lg-8 col-md-7 col-sm-12">
-    <div class="overflow-auto d-flex text-header">
-        <% Storage.where(user_id: current_user.id).each do |storage| %>
-          <ul class="navbar-nav overflow-scroll text-nowrap" style="height: 50px;">
-            <%= link_to storage_path(storage), class: 'nav-link text-light mx-2' do %>
-              <li>
-                <%= storage.name %>
-              </li>
-            <% end %>
-          </ul>
+<nav class="navbar navbar-expand-md navbar-dark bg-header text-header">
+  <div class="overflow-auto d-flex text-header">
+    <% Storage.where(user_id: current_user.id).each do |storage| %>
+      <ul class="navbar-nav overflow-scroll text-nowrap" style="height: 50px;">
+        <%= link_to storage_path(storage), class: 'nav-link text-light mx-2' do %>
+          <li>
+            <%= storage.name %>
+          </li>
         <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+    <div class="search_form">
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+        <%= f.hidden_field :id, value: current_user.id %>
+        <%= f.text_field :word, class: "w-75" %>
+        <%= f.submit '検索', class: "btn btn-primary" %>
+      <% end %>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-5">
-    <div class="search_form mr-2 d-flex justify-content-end">
-        <%= form_with url: search_path, local: true, method: :get do |f| %>
-          <%= f.hidden_field :id, value: current_user.id %>
-          <%= f.text_field :word %>
-          <%= f.submit '検索', class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </nav>
-  </div>
   <% end %>
-</div>
+</nav>
