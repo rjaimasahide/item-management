@@ -2,7 +2,7 @@
   <div class="col">
     <div  class="row shadow-sm h-100 pt-3 mb-2 bg-body bg-light rounded text-aline">
       <div class="bd-highlight mx-1 text-center">
-        <%= link_to edit_item_path(item) do %>
+        <%= link_to edit_item_path(item.id) do %>
           <p class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '60%' %></p>
         <% end %>
       </div>
