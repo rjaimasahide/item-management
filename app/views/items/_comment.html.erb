@@ -1,5 +1,5 @@
 <% item.item_comments.each do |item_comment| %>
-  <table class="table table-borderless m-auto">
+  <table class="table table-borderless m-auto ">
     <tr>
       <th class="text-left" style="width: 200px;">
         <%= link_to item_item_comment_path(item,item_comment), method: :delete, remote: true, data: { confirm: "このコメントを削除しますか？" } do %>

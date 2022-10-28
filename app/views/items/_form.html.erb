@@ -20,16 +20,16 @@
   </div>
   <div class="form-row">
     <div class="form-group d-flex col-md-12">
-      <label class="w-25 m-auto">画像</label>
+      <label class="m-auto">画像</label>
       <%= f.file_field :image_id, accept: "image/*" %>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-7">
-      <lavel>持ち主</lavel>
+    <div class="form-group col-7">
+      <lavel class="w-25 m-auto">持ち主</lavel>
       <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true, class: "form-control" %>
     </div>
-    <div class="form-group col-md-5">
+    <div class="form-group col-5 ">
       <%= f.label :purchase_status, '買う' %>
       <%= f.check_box :purchase_status, check:true %>
     </div>

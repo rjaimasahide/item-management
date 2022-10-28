@@ -1,6 +1,12 @@
 <%= form_with(model:[item,item_comment], method: :post, local: false) do |f| %>
-  <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
-  <%= f.label :comment %>
-  <%= f.text_area :comment %>
-  <%= f.submit 'コメント登録' %>
+  <div class="form-row row-cols-2">
+    <div claas="form-group col-6">
+      <%= f.text_area :comment, class: "form-control w-100 mt-3", placeholder: "コメントを入力してください"%>
+    </div>
+    <div class="form-group col-6 d-flex align-items-end mb-0">
+      <%= f.select :member_id, options_from_collection_for_select(Member.all,:id,:name) %>
+      <%= f.submit 'コメント登録', class: "ml-2" %>
+    </div>
+    </div>
+  </div>
 <% end %>

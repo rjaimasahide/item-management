@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.bg-header {
+  background-color: #55acee !important;
+}
+
+.text-header {
+  font-family: Verdana !important;
+  font-weight: 600 !important;
+}
