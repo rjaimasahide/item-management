@@ -9,3 +9,18 @@
   font-family: Verdana !important;
   font-weight: 600 !important;
 }
+
+.text-footer {
+  font-color: #999999 !important;
+}
+
+body {
+  position: relative;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
+}

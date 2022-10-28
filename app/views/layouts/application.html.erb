@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="h-100">
     <header>
       <%= render 'layouts/header' %>
     </header>
     <%= yield %>
-    <footer>
+    <footer class="bg-header w-100 text-center text-white" style ="height: 50px;" >
       <%= render 'layouts/footer' %>
     </footer>
   </body>
