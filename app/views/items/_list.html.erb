@@ -7,7 +7,10 @@
         <% end %>
       </div>
       <div class="bd-highlight mx-1 text-center align-self-end w-100">
-        <p class="m-1"><%= link_to item.name, edit_item_path(item) %></p>
+        <p class="m-1"><%= link_to item.name, edit_item_path(item) %>
+          <% if item.item_comments.exists?(item.item_comments) %>
+            <i class="far fa-comment"></i>
+          <% end %></p>
         <% if item.purchase_status == true %>
           <p class="mx-auto my-1 w-25 bg-danger text-white rounded">買う</p>
         <% else %>
