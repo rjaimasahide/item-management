@@ -28,49 +28,50 @@
               <%= f.file_field :image_id, accept: "image/*" %>
             </div>
           </div>
-        <div class="form-row">
-          <div class="form-group d-flex col-7">
-            <lavel class="w-25">持ち主</lavel>
-            <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true, class: "form-control" %>
+          <div class="form-row">
+            <div class="form-group d-flex col-7">
+              <lavel class="w-25">持ち主</lavel>
+              <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true, class: "form-control" %>
+            </div>
+            <div class="form-group col-5">
+              <%= f.label :purchase_status, '買う' %>
+              <%= f.check_box :purchase_status, check:true %>
+            </div>
           </div>
-          <div class="form-group col-5">
-            <%= f.label :purchase_status, '買う' %>
-            <%= f.check_box :purchase_status, check:true %>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <lavel>詳細</lavel>
+              <%= f.text_area :comment, class: "form-control" %>
+            </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <lavel>詳細</lavel>
-            <%= f.text_area :comment, class: "form-control" %>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
+            </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
-          </div>
-        </div>
-      <% end %>
-      <div class="row">
-        <div class="col">
-          <%= form_with model: @item, url: item_path, local:true do |f| %>
-            <%= f.hidden_field :deleted_at, value: true %>
-            <%= f.submit '削除する', class: 'btn btn-danger btn-block', data: { confirm: "このアイテムを削除しますか？" } %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-sm-11 mt-3">
-      <div clss="row">
-        <h5>コメント</h5>
-        <div class="col border bg-light overflow-auto" style="height: 500px;">
-          <div class="item_comment">
-            <%= render "comment", item: @item %>
+        <% end %>
+        <div class="row">
+          <div class="col">
+            <%= form_with model: @item, url: item_path, local:true do |f| %>
+              <%= f.hidden_field :deleted_at, value: true %>
+              <%= f.submit '削除する', class: 'btn btn-danger btn-block', data: { confirm: "このアイテムを削除しますか？" } %>
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <%= render "new_comment", item: @item, item_comment: @item_comment %>
+      <div class="col-12 col-md-6 col-sm-11 mt-3">
+        <div clss="row">
+          <h5>コメント</h5>
+          <div class="col border bg-light overflow-auto" style="height: 500px;">
+            <div class="item_comment">
+              <%= render "comment", item: @item %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= render "new_comment", item: @item, item_comment: @item_comment %>
+          </div>
         </div>
       </div>
     </div>
