@@ -2,7 +2,7 @@
   <div class="row">
     <div class="form-inline text-left m-3">
       <h3><%= @storage.name %></h3>
-      <h5>(全<%= Item.where(user_id: current_user.id, storage_id: @storage.id).count %>件)</h5>
+      <h5>(全<%= Item.where(user_id: current_user.id, storage_id: @storage.id, deleted_at: false).count %>件)</h5>
       <%= link_to edit_storage_path(@storage) do %>
         <i class="fas fa-edit"></i>
       <% end %>
@@ -23,7 +23,11 @@
     </div>
   </div>
   <div class="row row-cols-md-4 row-cols-2">
-    <%= render 'items/list', items: @items %>
+    <% if @items.count == 0 %>
+      アイテムがありません
+    <% else %>
+      <%= render 'items/list', items: @items %>
+    <% end %>
   </div>
   <div class="row justify-content-center">
     <div class="col d-flex justify-content-center pt-2">
