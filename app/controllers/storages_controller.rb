@@ -26,7 +26,7 @@ class StoragesController < ApplicationController
     @storage = Storage.new(storage_params)
     @storage.user_id = current_user.id
     if @storage.save
-       redirect_to new_storage_path
+       redirect_to storage_path(@storage)
     else
        flash[:danger] = @storage.errors.full_messages
        redirect_to new_storage_path
@@ -37,7 +37,7 @@ class StoragesController < ApplicationController
     @storage = Storage.find(params[:id])
     @storage.user_id = current_user.id
     if  @storage.update(storage_params)
-        redirect_to edit_storage_path(@storage)
+        redirect_to storage_path(@storage)
     else
         flash[:danger] = @storage.errors.full_messages
         redirect_to edit_storage_path(@storage)
