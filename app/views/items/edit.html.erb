@@ -31,7 +31,7 @@
           <div class="form-row">
             <div class="form-group d-flex col-7">
               <lavel class="w-25">持ち主</lavel>
-              <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), :include_blank => true, class: "form-control" %>
+              <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), style: "width:100px;", :include_blank => true %>
             </div>
             <div class="form-group col-5">
               <%= f.label :purchase_status, '買う' %>
