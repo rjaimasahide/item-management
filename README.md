@@ -28,7 +28,9 @@
 - 複数人で冷蔵庫などを使用している場合
 
 ## 設計書
-<...>
+- ER図  https://app.diagrams.net/#G1i60yRvhutdzNvwhoNeiq_4y8NXca5sC7
+- 画面遷移図  https://app.diagrams.net/#G1i60yRvhutdzNvwhoNeiq_4y8NXca5sC7
+- テーブル定義書  https://docs.google.com/spreadsheets/d/1ySXf-hNt_C0xYeuZ6CnCgWYwcpcpseZdU2mpYo2q2DY/edit#gid=0
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -38,4 +40,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+- fontawesome
