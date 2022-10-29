@@ -1,7 +1,7 @@
 <% members.each do |member| %>
   <table>
     <tr>
-      <th class="text-left" style="width: 150px;">
+      <th class="text-left text-nowrap" style="width: 150px;">
         <%= link_to member_path(member), method: :delete, data: { confirm: "このメンバーを削除しますか？" } do %>
           <i class="far fa-trash-alt"></i>
         <% end %>

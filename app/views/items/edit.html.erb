@@ -6,34 +6,34 @@
         <%= image_tag @item.get_image_id, class: "mb-2", width: '30%', height: '30%' %>
           <div class="form-row">
             <div class="form-group d-flex col-12">
-              <label class="w-25 m-auto">名前</label>
+              <label class="mr-1 my-auto text-nowrap">アイテム名</label>
               <%= f.text_field :name, class: "form-control text-center", placeholder: "名前" %>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group d-flex col-12">
-              <label class="w-25 m-auto">個数</label>
+              <label class="mr-1 my-auto text-nowrap">個数</label>
                 <%= f.text_field :amount, class: "form-control text-center", placeholder: "個数" %>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group d-flex col-12">
-              <label class="w-25 m-auto">期限日</label>
+              <label class="mr-1 my-auto text-nowrap">期限日</label>
               <%= f.date_field :deadline, class: "form-control" %>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group d-flex col-12">
-              <label class="w-25">画像</label>
+              <label class="mr-1 my-auto text-nowrap">画像</label>
               <%= f.file_field :image_id, accept: "image/*" %>
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group d-flex col-7">
-              <lavel class="w-25">持ち主</lavel>
-              <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner), style: "width:100px;", :include_blank => true %>
+          <div class="form-row row-cols-1">
+            <div class="form-group d-flex justify-content-center m-auto col-sm-9 col-12">
+              <lavel class="mr-1 my-auto text-nowrap">持ち主</lavel>
+              <%= f.select :owner, options_from_collection_for_select(Member.where(user_id: current_user.id), :name, :name, :selected => @item.owner ), {}, {style: "width:130px;", :include_blank => true} %>
             </div>
-            <div class="form-group col-5">
+            <div class="form-group m-auto col-sm-3 col-12">
               <%= f.label :purchase_status, '買う' %>
               <%= f.check_box :purchase_status, check:true %>
             </div>

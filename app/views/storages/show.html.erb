@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="row justify-content-between">
-    <div class="col">
+    <div class="col text-nowrap">
       <%= form_with url: storage_path(@storage), method: :get do |f| %>
         <%= f.select :order, options_for_select([["更新日順","updated_at_order"],["期限順","latest_order"],["買うもの優先","purchase_status_order"],["名前順","name_order"]], :selected => params[:order]) %>
         <%= f.hidden_field :storage_id, value: @storage.id %>
@@ -18,7 +18,7 @@
     </div>
     <div class="col text-right">
       <%= link_to new_item_path(storage_id: @storage.id) do %>
-        <button class="btn btn-success" >アイテム追加</button>
+        <button class="btn btn-success mb-2" ><i class="fas fa-plus"></i></button>
       <% end %>
     </div>
   </div>
