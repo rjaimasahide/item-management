@@ -7,7 +7,7 @@
     <div class="col d-flex justify-content-center text-center">
       <div class="form-inline">
         <%= form_with model: @storage, url: storages_path, local:true do |f| %>
-          <%= f.text_field :name, class: "form-control", placeholder: "タグ名" %>
+          <%= f.text_field :name, class: "form-control", placeholder: "タブ名" %>
           <%= f.submit "新規登録", class: "btn btn-primary w-50 mt-3" %>
         <% end %>
       </div>

@@ -9,13 +9,19 @@
             <%= render "members/index", members: @members %>
           <% end %>
         </div>
-        <div class="mt-3 form-inline d-flex justify-content-end text-nowrap">
+        <div class="mt-3 d-flex justify-content-end">
           <div class="text-danger">
             <%= flash[:danger] %>
           </div>
           <%= form_with model: @member, url: members_path, local:false do |f| %>
-            <%= f.text_field :name, class: "form-control", placeholder: "メンバー名" %>
-            <%= f.submit '追加', class: "btn btn-primary ml-2" %>
+            <div class="row mr-1">
+              <div class="col-9 px-0">
+                <%= f.text_field :name, class: "form-control", placeholder: "メンバー名" %>
+              </div>
+              <div class="col-3 px-0">
+                <%= f.submit '追加', class: "btn btn-primary" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

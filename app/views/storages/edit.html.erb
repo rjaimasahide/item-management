@@ -7,7 +7,7 @@
     <div class="col d-flex justify-content-center text-center">
       <div class="form-inline">
       <%= form_with model: @storage, url: storage_path(@storage), local:true do |f| %>
-        <%= f.text_field :name, class: "form-control", placeholder: "タグ名" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "タブ名" %>
         <%= f.submit "名前変更", class: "btn btn-primary w-50 mt-3" %>
       <% end %>
       </div>
@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col text-center">
-      <%= link_to 'このタグを削除する', storage_path(@storage), method: :delete, data: { confirm: "この保管庫を削除しますか？" } %>
+      <%= link_to 'このタブを削除する', storage_path(@storage), method: :delete, data: { confirm: "このタブを削除しますか？" } %>
     </div>
   </div>
 </div>
