@@ -11,9 +11,9 @@
       <% @items.each do |item| %>
         <div class="col">
           <div  class="row shadow-sm h-100 pt-3 mb-2 mx-1 bg-body bg-light rounded text-aline">
-            <div class="bd-highlight mx-1 text-center">
+            <div class="bd-highlight mx-1 mx-auto text-center">
               <%= link_to item_path(item) do %>
-                <p class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '60%' %></p>
+                <img class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '90%' %></img>
               <% end %>
             </div>
             <div class="bd-highlight mx-1 text-center align-self-end w-100">
@@ -28,9 +28,9 @@
               <% elsif item.period > 0 %>
                 <p class="my-1">あと<%= item.period %>日</p>
               <% elsif item.period == 0 %>
-                <p class="my-1 text-danger">期限日です</p>
+                <p class="my-1 text-danger">期限日</p>
               <% else %>
-                <p class="my-1 text-danger">期限が切れています</p>
+                <p class="my-1 text-danger">期限切れ</p>
               <% end %>
               <% if item.deadline == nil %>
                 <p style="height: 12px;"></p>

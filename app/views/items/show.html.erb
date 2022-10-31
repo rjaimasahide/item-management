@@ -33,7 +33,7 @@
           <% end %>
       </div>
       <%= form_with model: @item, url: item_path, local: true do |f| %>
-        <%= f.label :storage_id, "タグ" ,class:'form-label col-4' %>
+        <%= f.label :storage_id, "タブ" ,class:'form-label col-4' %>
         <%= f.select :storage_id, options_from_collection_for_select(Storage.where(user_id: current_user.id),:id,:name), {prompt: '保管場所を選択してください'} , class:' col-5'%>
         <%= f.hidden_field :deleted_at, value: false %>
         <%= f.submit 'アイテムに追加' %>
