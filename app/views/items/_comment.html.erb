@@ -1,13 +1,15 @@
 <% item.item_comments.each do |item_comment| %>
   <table class="table table-borderless mt-1 ">
     <tr>
-      <th class="text-left text-nowrap" style="width: 60px;">
+      <th class="text-left text-nowrap" style="width: 90px;">
+        <%= item_comment.member.name %>
+      </th>
+      <td class="text-left shadow-sm rounded-pill text-wrap" style="width: 300px;"><%= item_comment.comment %></td>
+      <td class="px-0 text-nowrap" style="width: 110px;"><%= item_comment.created_at.strftime('%Y/%m/%d') %>
         <%= link_to item_item_comment_path(item,item_comment), method: :delete, remote: true, data: { confirm: "このコメントを削除しますか？" } do %>
           <i class="far fa-trash-alt"></i>
         <% end %>
-        <%= item_comment.member.name %>
-      </th>
-      <td class="text-left shadow-sm rounded-pill text-wrap"><%= item_comment.comment %></td>
+      </td>
     </tr>
   </table>
 <% end %>
