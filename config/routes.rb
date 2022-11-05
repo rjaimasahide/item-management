@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
   resources :storages, only: [:new, :edit, :show, :create, :update, :destroy]
 
-  resources :items, only: [:index, :show, :new, :edit, :create, :destroy, :update] do
+  resources :items, only: [:show, :new, :edit, :create, :destroy, :update] do
     resources :item_comments, only: [:create, :destroy]
     get 'shopping_list', on: :collection
+    get 'deleted_items', on: :collection
   end
 
   resources :members, only: [:create, :destroy]

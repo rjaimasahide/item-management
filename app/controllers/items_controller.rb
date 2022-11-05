@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def index
+  def deleted_items
     items = Item.where(deleted_at: true, user_id: current_user.id)
     @items = items.page(params[:page])
   end
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to deleted_items_items_path
   end
 
   def update
