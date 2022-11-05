@@ -1,13 +1,5 @@
 class StoragesController < ApplicationController
 
-  def index
-    @storages = Storage.where(user_id: current_user.id)
-    @member = Member.new
-    @members = Member.where(user_id: current_user.id)
-    items = Item.where(user_id: current_user.id, purchase_status: true)
-    @items = items.page(params[:page])
-  end
-
   def show
     @storage = Storage.find(params[:id])
     items = Item.list(params[:order], @storage.id)

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:top]
 
   def after_sign_in_path_for(resource)
-    storages_path
+    shopping_list_items_path
   end
 
   def after_sign_out_path_for(resource)
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-    storages_path
+    shopping_list_items_path
   end
 
   protected

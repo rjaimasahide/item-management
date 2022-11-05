@@ -19,6 +19,14 @@ class ItemsController < ApplicationController
     @item_comment = ItemComment.new
   end
 
+  def shopping_list
+    @storages = Storage.where(user_id: current_user.id)
+    @member = Member.new
+    @members = Member.where(user_id: current_user.id)
+    items = Item.where(user_id: current_user.id, purchase_status: true)
+    @items = items.page(params[:page])
+  end
+
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
