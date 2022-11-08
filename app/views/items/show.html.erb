@@ -32,10 +32,15 @@
             <p class="p-1"></p>
           <% end %>
       </div>
-      <%= form_with model: @item, url: item_path, local: true do |f| %>
+      <%= form_with model: @item_new, url: items_path, local:true do |f| %>
         <%= f.label :storage_id, "タブ" ,class:'form-label col-4' %>
-        <%= f.select :storage_id, options_from_collection_for_select(Storage.where(user_id: current_user.id),:id,:name), {prompt: '保管場所を選択してください'} , class:' col-5'%>
-        <%= f.hidden_field :deleted_at, value: false %>
+        <%= f.select :storage_id, options_from_collection_for_select(Storage.where(user_id: current_user.id),:id,:name), {prompt: 'タブを選択してください'} , class:' col-5'%>
+        <%= f.hidden_field :name, value: @item.name %>
+        <%= f.hidden_field :amount, value: @item.amount %>
+        <%= f.hidden_field :deadline, value: @item.deadline %>
+        <%= f.hidden_field :owner, value: @item.owner %>
+        <%= f.hidden_field :comment, value: @item.comment %>
+        <%= f.hidden_field :purchase_status, value: @item.purchase_status %>
         <%= f.submit 'アイテムに追加' %>
       <% end %>
       <div class="text-right">
