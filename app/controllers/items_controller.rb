@@ -41,6 +41,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update_new
+    @item = Item.new(item_params)
+    @item.user_id = current_user.id
+    @storage_id = @item.storage_id
+    if @item.save
+       redirect_to deleted_items_items_path
+    else
+       flash[:danger] = @item.errors.full_messages
+       redirect_to deleted_items_items_path
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     @item.destroy

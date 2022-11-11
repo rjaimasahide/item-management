@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :item_comments, only: [:create, :destroy]
     get 'shopping_list', on: :collection
     get 'deleted_items', on: :collection
+    post 'update_new', on: :collection
   end
 
   resources :members, only: [:create, :destroy]

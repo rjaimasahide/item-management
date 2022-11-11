@@ -32,7 +32,7 @@
             <p class="p-1"></p>
           <% end %>
       </div>
-      <%= form_with model: @item_new, url: items_path, local:true do |f| %>
+      <%= form_with model: @item_new, url: update_new_items_path, local:true do |f| %>
         <%= f.label :storage_id, "タブ" ,class:'form-label col-4' %>
         <%= f.select :storage_id, options_from_collection_for_select(Storage.where(user_id: current_user.id),:id,:name), {prompt: 'タブを選択してください'} , class:' col-5'%>
         <%= f.hidden_field :name, value: @item.name %>
