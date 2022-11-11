@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy, :show]}
 
   def show
     @item = Item.find(params[:id])
@@ -50,6 +51,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to storage_path(@item.storage_id)
+  end
+
+  #閲覧できるユーザーの制限
+  def ensure_correct_user
+    @item = Item.find(params[:id])
+    if @item.user_id !=  current_user.id
+       redirect_to root_path
+    end
   end
 
   private

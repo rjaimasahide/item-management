@@ -1,5 +1,6 @@
 class StoragesController < ApplicationController
-
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy, :show]}
+  
   def show
     @storage = Storage.find(params[:id])
     items = Item.list(params[:order], @storage.id)
@@ -40,6 +41,14 @@ class StoragesController < ApplicationController
     @storage = Storage.find(params[:id])
     @storage.destroy
     redirect_to storages_path
+  end
+  
+  #閲覧できるユーザーの制限
+  def ensure_correct_user
+    @storage = Storage.find(params[:id])
+    if @storage.user_id !=  current_user.id
+       redirect_to root_path
+    end
   end
 
 
