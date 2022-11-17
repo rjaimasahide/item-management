@@ -41,6 +41,7 @@
         <%= f.hidden_field :owner, value: @item.owner %>
         <%= f.hidden_field :comment, value: @item.comment %>
         <%= f.hidden_field :purchase_status, value: @item.purchase_status %>
+        <%= f.hidden_field :image_id , value: @item.image_id.signed_id if @item.image_id.attached?%>
         <%= f.submit 'アイテムに追加' %>
       <% end %>
       <div class="text-right">
