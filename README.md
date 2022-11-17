@@ -33,7 +33,7 @@
 - テーブル定義書  https://docs.google.com/spreadsheets/d/1ySXf-hNt_C0xYeuZ6CnCgWYwcpcpseZdU2mpYo2q2DY/edit#gid=0
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux2(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
