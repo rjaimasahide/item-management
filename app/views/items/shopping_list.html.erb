@@ -3,7 +3,7 @@
     <div class="col-lg-4 mt-2 text-center">
       <h3>メンバー</h3>
         <div class="shadow-sm overflow-auto rounded bg-light p-2">
-          <% if @member == 0 %>
+          <% if @members.count == 0 %>
             メンバーがいません
           <% else %>
             <%= render "members/index", members: @members %>
