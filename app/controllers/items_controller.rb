@@ -48,8 +48,8 @@ class ItemsController < ApplicationController
     if @item.save
        redirect_to deleted_items_items_path
     else
-       flash[:danger] = @item.errors.full_messages
-       redirect_to deleted_items_items_path
+       flash[:danger] = "タブを選択してください"
+       redirect_back(fallback_location: root_path)
     end
   end
 
@@ -61,8 +61,12 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to storage_path(@item.storage_id)
+    if @item.update(item_params)
+       redirect_to storage_path(@item.storage_id)
+    else
+       flash[:danger] = @item.errors.full_messages
+       redirect_to edit_item_path(@item.id)
+    end
   end
 
   #閲覧できるユーザーの制限

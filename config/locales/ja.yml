@@ -3,7 +3,8 @@ ja:
     attributes:
       item:
         name: アイテム名
+        storage_id: タブ
       member:
         name: メンバー名
       storage:
-        name: 保管所名
+        name: タブ
