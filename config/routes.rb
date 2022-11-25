@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get "users" => "homes#top"
-  
+
   #検索機能
   get "search" => "searches#search"
-  
+
   #タブ部分
   resources :storages, only: [:new, :edit, :show, :create, :update, :destroy]
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'shopping_list', on: :collection
     get 'deleted_items', on: :collection
     post 'update_new', on: :collection
+    delete 'all_destroy', on: :collection
   end
 
   #メンバー部分

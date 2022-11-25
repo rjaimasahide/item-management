@@ -59,6 +59,12 @@ class ItemsController < ApplicationController
     redirect_to deleted_items_items_path
   end
 
+  def all_destroy
+    items = Item.where(user_id: current_user.id, deleted_at: true)
+    items.destroy_all
+    redirect_to deleted_items_items_path
+  end
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
