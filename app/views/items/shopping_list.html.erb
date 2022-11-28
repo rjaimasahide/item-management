@@ -28,7 +28,11 @@
       <div class="col-lg-7 col-12 mt-2 text-center">
         <h3>買うものリスト</h3>
         <div class="row row-cols-2">
-          <%= render 'items/list', items: @items %>
+          <% if @items.count == 0 %>
+            リストがありません
+          <% else %>
+            <%= render 'items/list', items: @items %>
+          <% end %>
         </div>
         <div class="row justify-content-center">
           <div class="col d-flex justify-content-center pt-2">
