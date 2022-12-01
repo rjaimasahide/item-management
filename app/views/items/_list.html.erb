@@ -1,9 +1,9 @@
 <% items.each do |item| %>
-  <div class="col">
-    <div  class="row shadow-sm h-100 pt-3 mb-2 bg-body bg-light rounded text-aline">
-      <div class="bd-highlight mx-1 mx-auto text-center">
+  <div class="col mb-3">
+    <div  class="row shadow-sm h-100 pt-3 m-0 bg-body bg-light rounded text-aline">
+      <div class="bd-highlight mx-auto text-center">
         <%= link_to edit_item_path(item.id) do %>
-          <img class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '90%' %></img>
+          <img class="mx-auto"><%= image_tag item.get_image_id, width: '60%', height: '70%' %></img>
         <% end %>
       </div>
       <div class="bd-highlight mx-1 text-center align-self-end w-100">
@@ -12,7 +12,7 @@
             <i class="far fa-comment"></i>
           <% end %></p>
         <% if item.purchase_status == true %>
-          <p class="mx-auto my-1 w-25 bg-danger text-white rounded">買う</p>
+          <p class="mx-auto my-1 bg-danger text-white text-nowrap rounded" style="width: 60px;">買う</p>
         <% else %>
           <p style="height: 12px;"></p>
         <% end %>
@@ -28,7 +28,7 @@
         <% if item.deadline == nil %>
           <p style="height: 12px;"></p>
         <% else %>
-          <p class="my-1">期限日 <%= item.deadline %></p>
+          <p class="my-1">期限日<br><%= item.deadline %></p>
         <% end %>
       </div>
     </div>
